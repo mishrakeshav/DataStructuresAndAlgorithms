@@ -18,7 +18,7 @@ int insert(int a[50],int n){
 	}
 	printf("Enter the value of element: ");
 	scanf("%d", &val);
-	for(i=n; i>pos; i--){
+	for(i=n; i>=pos; i--){
 		a[i] = a[i-1];
 
 	}
@@ -81,21 +81,24 @@ reverse(int a[50], int n){
 }
 duplicate(int a[50], int n){
 
-    int i, j;
+    int i, j, count=0;
     for(i=0; i<n; i++){
         for(j=i+1; j<n-1; j++){
 
             if(a[i]==a[j]){
                 printf("%d\t", a[i]);
+                count++;
                 break;
+		}
             }
         }
-    }
+
+    return count;
 }
 
 int main()
 {
-	int ch, a[50], n, i;
+	int ch, a[50], n, i, dupli;
 	printf("Enter number of elements\n");
 	scanf("%d", &n);
 	printf("Enter elements\n");
@@ -103,6 +106,11 @@ int main()
 		printf("Enter element[%d]: ", i);
 		scanf("%d", &a[i]);
 	}
+	printf("__________________________________________\n");
+	printf("------------------------------------------\n");
+	printf("                  MENU                    \n");
+	printf("------------------------------------------\n");
+	printf("__________________________________________\n");
 
 	printf("Enter choice\n");
 	printf("1. Insert an Element by position\n");
@@ -126,7 +134,10 @@ int main()
 			break;
 		case 5:
 			printf("Duplicate values are: \n");
-			duplicate(a, n);
+			dupli= duplicate(a, n);
+			if(dupli==0){
+				printf("There are no duplicate elements!");
+			}
 			break;
 		default :
 			printf("Invalid choice!");
