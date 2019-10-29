@@ -36,7 +36,7 @@ void delete(){
     NODE * trash = front;
     front = front->next;
     free(trash);
-}
+} 
 void contains(int data){
     if(front==NULL){
         printf("\nFalse");
